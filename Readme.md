@@ -25,6 +25,15 @@ Also keep in mind I was learning both Angular and GO when working on this applic
 ## Getting the code
 
 	$ git clone https://github.com/spectre013/cuberific
+	$ cd $PATH TO CODE/src/cuberific
+
+Get the dependencies
+
+	$ go get code.google.com/p/gorest
+	$ go get code.google.com/p/go.crypto
+	$ go get github.com/nu7hatch/gouuid
+	$ go get labix.org/v2/mgo
+
 
 ## building the go service
 
