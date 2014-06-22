@@ -1,0 +1,9 @@
+<div id="login" ng-controller="register">
+	<div id="message" ng-bind="result.message"></div>
+	<form name="login_form" ng-submit="submit()">
+        Username: <input type="text" name="username" ng-model="form_data.username" required><br>
+        Password: <input type="password" name="password" ng-model="form_data.password" required><br>
+        EMail Address: <input type="text" name="email" ng-model="form_data.email" required><br>
+        <input type="submit" id="submit" />
+    </form>
+</div> 

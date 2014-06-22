@@ -1,0 +1,163 @@
+Profile Collection Structure
+
+{
+    "id" : "8c9e1f32-5420-4db1-42cb-753fb9e7fa6e",
+    "username" : "<USERNAME>",
+    "inspection" : false,
+    "currentsession" : {
+        "id" : 0,
+        "userid" : "8c9e1f32-5420-4db1-42cb-753fb9e7fa6e",
+        "name" : "default"
+    },
+    "sessions" : [ 
+        {
+            "id" : 0,
+            "userid" : "8c9e1f32-5420-4db1-42cb-753fb9e7fa6e",
+            "name" : "default"
+        }, 
+        {
+            "id" : 1,
+            "userid" : "8c9e1f32-5420-4db1-42cb-753fb9e7fa6e",
+            "name" : "Stickerless"
+        }, 
+        {
+            "id" : 2,
+            "userid" : "8c9e1f32-5420-4db1-42cb-753fb9e7fa6e",
+            "name" : "Black Zanchi"
+        }, 
+        {
+            "id" : 3,
+            "userid" : "8c9e1f32-5420-4db1-42cb-753fb9e7fa6e",
+            "name" : "White Zanchi"
+        }
+    ]
+}
+
+Solve Collection Structure
+
+{
+    "date" : ISODate("2013-11-20T01:32:58.149Z"),
+    "displaytime" : "36.70",
+    "dnf" : false,
+    "id" : "f87ace32-b458-4129-4bf2-07e9be88be9d",
+    "penalty" : false,
+    "scramble" : "D2 B' L' R' B' F R' D U R2 F2 R F' D2 L2 R2 U2 L2 B2 U2 R F' D' B'",
+    "session" : 0,
+    "time" : 36706,
+    "type" : 3,
+    "user" : "8c9e1f32-5420-4db1-42cb-753fb9e7fa6e"
+}
+
+Users Structure 
+
+{
+    "id" : "8c9e1f32-5420-4db1-42cb-753fb9e7fa6e",
+    "username" : "<USERNAME>",
+    "password" : "<ENCRYPTED PASSWORD STRING>",
+    "email" : "Some.User@Example.com",
+    "stats" : {
+        "best" : 0,
+        "average" : 0,
+        "average5" : 0,
+        "average12" : 0,
+        "average100" : 0,
+        "bestavg5" : 0,
+        "bestavg12" : 0,
+        "bestavg100" : 0,
+        "mean" : 0,
+        "mean3" : 0,
+        "mean5" : 0,
+        "mean12" : 0,
+        "mean100" : 0,
+        "bestmean3" : 0,
+        "bestmean5" : 0,
+        "bestmean12" : 0,
+        "bestmean100" : 0,
+        "stddev" : 0
+    }
+}
+
+UserStats Collection 
+
+{
+    "userid" : "8c9e1f32-5420-4db1-42cb-753fb9e7fa6e",
+    "cubetype" : 3,
+    "session" : -1,
+    "solutions" : 287,
+    "best" : {
+        "time" : 23306,
+        "display" : "23.306"
+    },
+    "worst" : {
+        "time" : 46223,
+        "display" : "46.223"
+    },
+    "average" : {
+        "time" : 33916,
+        "display" : "33.916"
+    },
+    "average5" : {
+        "time" : 32589,
+        "display" : "32.589"
+    },
+    "average12" : {
+        "time" : 33758,
+        "display" : "33.758"
+    },
+    "average100" : {
+        "time" : 33920,
+        "display" : "33.92"
+    },
+    "bestavg5" : {
+        "time" : 29434,
+        "display" : "29.434"
+    },
+    "bestavg12" : {
+        "time" : 30963,
+        "display" : "30.963"
+    },
+    "bestavg100" : {
+        "time" : 33920,
+        "display" : "33.92"
+    },
+    "mean" : {
+        "time" : 33922,
+        "display" : "33.922"
+    },
+    "mean3" : {
+        "time" : 33770,
+        "display" : "33.77"
+    },
+    "mean5" : {
+        "time" : 32633,
+        "display" : "32.633"
+    },
+    "mean12" : {
+        "time" : 33758,
+        "display" : "33.758"
+    },
+    "mean100" : {
+        "time" : 33938,
+        "display" : "33.938"
+    },
+    "bestmean3" : {
+        "time" : 27637,
+        "display" : "27.637"
+    },
+    "bestmean5" : {
+        "time" : 29924,
+        "display" : "29.924"
+    },
+    "bestmean12" : {
+        "time" : 31026,
+        "display" : "31.026"
+    },
+    "bestmean100" : {
+        "time" : 32895,
+        "display" : "32.895"
+    },
+    "stddev" : {
+        "time" : 4355,
+        "display" : "4.355"
+    }
+}
