@@ -1,6 +1,6 @@
 # Cuberific
 
-Cuberific is a Rubik's Cube timer web application. The back end service is written in Go [Golang.org](Golang). The front end is an [https://angularjs.org/](Angular JS) application. On the web server front [https://nginx.org/](Nginx) was used to serve the Angular JS application and proxy the Go web service. For the database [http://www.mongodb.org/](MongoDB) was used. 
+Cuberific is a Rubik's Cube timer web application. The back end service is written in Go [Golang.org](http://Golang.org/). The front end is an [Angular JS](https://angularjs.org/) application. On the web server front [Nginx](https://nginx.org/) was used to serve the Angular JS application and proxy the Go web service. For the database [MongoDB](http://www.mongodb.org/) was used. 
 
 ### THIS APPLICATION IS NOT READY FOR PRODUCTION USE
 
@@ -17,9 +17,9 @@ Also keep in mind I was learning both Angular and GO when working on this applic
 
 ## Prerequisites
 
-- 	Golang [Golang.org](http://golang.org/)
+- 	Golang [http://golang.org/](http://golang.org/)
 -	Nginx [http://nginx.org/](http://nginx.org/)
--	MongoDB [http://www.mongodb.org/](MongoDB)
+-	MongoDB [http://www.mongodb.org/](http://www.mongodb.org/)
 -	GOHOME and GOPATH Environment variables set correctly
 
 ## Getting the code
