@@ -1,6 +1,6 @@
 # Cuberific
 
-Cuberific is a Rubik's Cube timer web application. The back end service is written in Go [Golang.org](http://golang.org/), while the front end is an [https://angularjs.org/](Angular JS) application. On the web server front Nginx was used to serve the Angular JS application and proxy the Go web service. For the database [http://www.mongodb.org/](MongoDB) was used. 
+Cuberific is a Rubik's Cube timer web application. The back end service is written in Go [Golang.org](Golang). The front end is an [https://angularjs.org/](Angular JS) application. On the web server front [https://nginx.org/](Nginx) was used to serve the Angular JS application and proxy the Go web service. For the database [http://www.mongodb.org/](MongoDB) was used. 
 
 ### THIS APPLICATION IS NOT READY FOR PRODUCTION USE
 
@@ -13,7 +13,7 @@ Shortcuts were taken with some aspects of security and would need to be fixed be
 
 If you find and errors with this documentation please let me know and I will update the document ASAP. As well if you modify the code and wish to have it added to the repository issue pull requests. 
 
-Also keep in mind I was learning both Angular and GO when working on this application so it may not be a perfect example of how to do the code properly. With that said I have a couple thousand solves in my local server that I have been running.  
+Also keep in mind I was learning both Angular and GO when working on this application so it may not be a perfect example of how to write Go/Angular code properly. With that said I have a couple thousand solves in my local server that I have been running.  
 
 ## Prerequisites
 
@@ -87,7 +87,7 @@ start the server and navigate to http://localhost or the domain or IP used to cr
 
 ## Getting Started
 
-Navigate to http://localhost you should be presented with the web application if not please view the Nginx logs or the console that the go service is running in to look for errors. 
+Navigate to the domain / IP used in the Nginx section and you should be presented with the web application if not please view the Nginx logs or the console that the go service is running in to look for errors. 
 
 
 ## Mongo Collections
