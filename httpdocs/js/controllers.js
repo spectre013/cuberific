@@ -155,6 +155,14 @@ var myApp =  angular.module('myApp.controllers',[]).
             return isTimer;
         }
 
+        $scope.profile = {"CurrentSession":{"Id":0},"Inspection":true};
+        profileService.get(function(response) {
+            $scope.profile = response; 
+            loadSolves();
+        });
+        $scope.cube = $routeParams.timer;
+        $scope.stats;
+
         //Transfer Test
         if(Cookies.hasItem('token')) {
             $scope.permissions = {'showRegister':false,'showLogin':false,'showLogout':true,'showProfile':true};
@@ -163,9 +171,6 @@ var myApp =  angular.module('myApp.controllers',[]).
         }
         $scope.$on('scramble',function(scramble) {
             $scope.scramble = scramble.targetScope.scramble;
-        });
-        profileService.get(function(response) {
-            $scope.session = response.CurrentSession.Id; 
         });
         $scope.timerRunning = false;
         $scope.currentTime = 0;

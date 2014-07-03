@@ -10,16 +10,15 @@ THE SOFTWARE.
 package main
 
 import (
-	"code.google.com/p/gorest"
-	"encoding/json"
-	"fmt"
-	"io/ioutil"
+	_ "encoding/json"
+	_ "fmt"
+	"github.com/gorilla/mux"
+	_ "io/ioutil"
 	"labix.org/v2/mgo"
-	"labix.org/v2/mgo/bson"
 	"log"
 	"net/http"
-	"strings"
-	"time"
+	_ "strings"
+	_ "time"
 )
 
 var (
@@ -37,19 +36,37 @@ func getSession() *mgo.Session {
 	return mgoSession.Clone()
 }
 
-func main() {
-	gorest.RegisterService(new(CubeService))
-	http.Handle("/", gorest.Handle())
-	http.ListenAndServe(":9090", nil)
+type Profile struct {
+	Id             string
+	Username       string
+	Inspection     bool
+	CurrentSession Session
+	Sessions       []Session
+}
 
+type Session struct {
+	Id     int
+	UserId string
+	Name   string
+}
+
+func main() {
+	r := mux.NewRouter()
+
+	r.HandleFunc("/profile/{user}", GetProfile)
+	r.HandleFunc("/", Index)
+	r.PathPrefix("/").Handler(http.FileServer(http.Dir("assets/")))
+	http.Handle("/", r)
+
+	log.Println("Listening...")
+	http.ListenAndServe(":3000", nil)
 }
 
 //************************Define Service***************************
 
-type CubeService struct {
-	//Service level config
+/*type CubeService struct {
 	gorest.RestService `root:"/api/" consumes:"application/json" produces:"application/json"`
-	/* SOLVE ENDPOINTS */
+
 	getSolves     gorest.EndPoint `method:"GET" path:"/solves" output:"[]Solves"`
 	addSolve      gorest.EndPoint `method:"POST" path:"/solves" postdata:"Solves"`
 	getUserSolves gorest.EndPoint `method:"GET" path:"/solves/{CubeType:int}/{userSession:int}/{UserId:string}" output:"[]Solves"`
@@ -57,25 +74,17 @@ type CubeService struct {
 	alterSolve    gorest.EndPoint `method:"GET" path:"/solves/alter/{Action:string}/{Status:bool}/{userId:string}/{SolveId:string}" output:"string"`
 	getStats      gorest.EndPoint `method:"GET" path:"/solves/stats/{CubeType:int}/{userSession:int}/{UserId:string}" output:"Stats"`
 
-	/* USERS ENDPOINTS */
+
 	getUsers  gorest.EndPoint `method:"GET" path:"/users" output:"[]User"`
 	addUser   gorest.EndPoint `method:"POST" path:"/users" postdata:"User"`
 	loginUser gorest.EndPoint `method:"POST" path:"/users/login" postdata:"Login"`
-	//addItem     gorest.EndPoint `method:"POST" path:"/items/" postdata:"Item"`
 
-	/* session info */
 	getProfile    gorest.EndPoint `method:"GET" path:"/profile/{UserId:string}" output:"Profile"`
 	updateProfile gorest.EndPoint `method:"POST" path:"/profile/" postdata:"Profile"`
 
-	//Utility Actions
+
 	ingestSolves gorest.EndPoint `method:"GET" path:"/ingest/{userId:string}" output:"string"`
 	updateStats  gorest.EndPoint `method:"GET" path:"/statsupdate/" output:"Stats"`
-
-	//On a real app for placeOrder below, the POST URL would probably be just /orders/, this is just to
-	// demo the ability of mixing post-data parameters with URL mapped parameters.
-	//placeOrder  gorest.EndPoint `method:"POST" path:"/orders/new/{UserId:int}/{RequestDiscount:bool}" postdata:"Order"`
-	//viewOrder     gorest.EndPoint `method:"GET" path:"/orders/{OrderId:int}" output:"Order"`
-	//deleteOrder     gorest.EndPoint `method:"DELETE" path:"/orders/{OrderId:int}"`
 
 }
 
@@ -227,12 +236,6 @@ func (serv CubeService) AddUser(user User) {
 		if err != nil {
 			panic(err)
 		}
-		/*profile := new(Profile)
-		session := Session{"Id": GetUUID(), "UserId": user.Id, "Name": "default"}
-		profile.Id = user.Id
-		sessId := GetUUID()
-		profile.CurrentSession = Session{"Id": sessId, "UserId": user.Id, "Name": "default"}
-		profile.Sessions = []Session{"Id": sessId, "UserId": user.Id, "Name": "default"}*/
 		UserInfo := new(UserInfo)
 		UserInfo.Id = user.Id
 		UserInfo.Token = Token(user.Username, user.Password)
@@ -484,4 +487,4 @@ func UpdateUserStats(userId string, cubeType int, userSession int) Stats {
 
 func (serv CubeService) UpdateStats() (stats Stats) {
 	return UpdateUserStats("8c9e1f32-5420-4db1-42cb-753fb9e7fa6e", 3, 0)
-}
+}*/

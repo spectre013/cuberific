@@ -9,6 +9,7 @@ THE SOFTWARE.
 */
 package main
 
+/*
 import (
 	"code.google.com/p/go.crypto/bcrypt"
 	"encoding/base64"
@@ -62,7 +63,7 @@ func LoginUser(username string, password string, s *mgo.Session) bool {
 	return validUser
 }
 
-/*Custom Functions */
+
 func GetUUID() string {
 	u4, err := uuid.NewV4()
 	if err != nil {
@@ -118,3 +119,4 @@ func setResponse(response *Response) (jsonResult []byte) {
 	jsonResult = []byte(jsonResult)
 	return
 }
+*/
