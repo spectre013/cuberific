@@ -183,12 +183,19 @@ var myApp =  angular.module('myApp.controllers',[]).
         });
         $scope.timerhold = false
         $scope.run = function(e) {
+            if(e.keyCode == 32  && !$scope.timerRunning) {
+
+             } else if(e.keyCode == 32 && $scope.timerRunning) {
+
+             }
+        }
+        $scope.run = function(e) {
             if(e.keyCode == 32 && !$scope.timerRunning && !$scope.timerhold) {
                 console.log("Start");
-                $scope.$broadcast('timer-start');
+                //$scope.$broadcast('timer-start');
                 $scope.timerRunning = true;
             } else if(e.keyCode == 32 && $scope.timerRunning) {
-                $scope.$broadcast('timer-stop');
+                //$scope.$broadcast('timer-stop');
                 $scope.timerRunning = false;
                 var user = '';
                 if(Cookies.hasItem('user')) {
@@ -250,6 +257,26 @@ var myApp =  angular.module('myApp.controllers',[]).
                $scope.session = profile.targetScope.profile.CurrentSession.Id;
 
         });
+
+        $scope.setSettings = function(setting) {
+            switch(setting) {
+                case "Inspection":
+                    if($scope.profile.Inspection) {
+                        $scope.profile.Inspection = false;
+                         $scope.$broadcast('inspectionoff');
+                    } else {
+                        $scope.profile.Inspection = true;
+                        $scope.$broadcast('inspectionon');
+                    }
+                    $scope.$broadcast("inspection.update",{"profile":$scope.profile});
+                    break;
+                default:
+
+            }
+            profileService.put($scope.profile,function(response){
+            });
+        } 
+        
 }]).controller('profile', ['$scope','$routeParams','profileService','getSolves',function($scope,$routeParams,profileService,getSolves) {
     $scope.solves = []
     profileService.get(function(response) {
@@ -273,6 +300,7 @@ var myApp =  angular.module('myApp.controllers',[]).
          $scope.$emit("profileUpdate",{"profile":$scope.profile});
     };
     $scope.open = function () {
+        console.log("Model Open");
         $rootScope.$broadcast("timerhold");
         var modalInstance = $modal.open({
           templateUrl: 'session.html',

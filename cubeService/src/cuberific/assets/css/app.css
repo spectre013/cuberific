@@ -16,6 +16,7 @@ body {
     font-size:14em;
     line-height: .75em;
     color:#aaa;
+    margin:20px;
 }
 
 #timer .action {
@@ -27,8 +28,8 @@ body {
   position: fixed;
   top: 50%;
   left: 50%;
-  margin-top: -150px;
-  margin-left: -300px;
+  margin-top: -200px;
+  margin-left: -350px;
 }
 
 .isDnf,.isPenalty {
@@ -85,6 +86,15 @@ body {
 #brand, #auth, #settings {
   width:100px;
 }
+
+.hideui {
+  display: none;
+}
+
+.showui {
+  display: block;
+}
+
 /*Boot Strap Overrides */
 
 .btn-dark { color: #ffffff; background-color: #000; border-color: #aaa; }

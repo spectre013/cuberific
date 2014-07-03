@@ -10,15 +10,11 @@ THE SOFTWARE.
 package main
 
 import (
-	_ "encoding/json"
-	_ "fmt"
 	"github.com/gorilla/mux"
-	_ "io/ioutil"
 	"labix.org/v2/mgo"
 	"log"
 	"net/http"
-	_ "strings"
-	_ "time"
+	"time"
 )
 
 var (
@@ -50,10 +46,24 @@ type Session struct {
 	Name   string
 }
 
+type Solves struct {
+	Id          string
+	User        string
+	Session     int
+	Date        time.Time
+	Scramble    string
+	Time        int
+	DisplayTime string
+	Type        int
+	Dnf         bool
+	Penalty     bool
+}
+
 func main() {
 	r := mux.NewRouter()
 
 	r.HandleFunc("/profile/{user}", GetProfile)
+	r.HandleFunc("/ingest/{user}", IngestSolves)
 	r.HandleFunc("/", Index)
 	r.PathPrefix("/").Handler(http.FileServer(http.Dir("assets/")))
 	http.Handle("/", r)

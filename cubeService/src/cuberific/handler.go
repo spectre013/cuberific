@@ -4,6 +4,7 @@ import (
 	"encoding/json"
 	"fmt"
 	"github.com/gorilla/mux"
+	"io/ioutil"
 	"labix.org/v2/mgo/bson"
 	"net/http"
 	"strings"
@@ -25,6 +26,32 @@ func GetProfile(w http.ResponseWriter, r *http.Request) {
 		fmt.Println(err)
 	}
 	RenderJson(w, profile)
+}
+
+func IngestSolves(w http.ResponseWriter, r *http.Request) {
+	vars := mux.Vars(r)
+	userId := vars["user"]
+	session := getSession()
+	defer session.Close()
+	//8c9e1f32-5420-4db1-42cb-753fb9e7fa6e
+	file, err := ioutil.ReadFile("C:/Users/brian.paulson/Desktop/cuberific/solves.json")
+	if err != nil {
+		fmt.Println("Error Reading File")
+		panic(err)
+	}
+	solves := []Solves{}
+	err = json.Unmarshal(file, &solves)
+	if err != nil {
+		fmt.Println("error:", err)
+	}
+	c := session.DB("cuberific").C("solves")
+	for _, solve := range solves {
+		if solve.Id != "" {
+			solve.User = userId
+			c.Insert(solve)
+		}
+	}
+	RenderJson(w, "success")
 }
 
 /* UTILITY FUNCATIONS */
